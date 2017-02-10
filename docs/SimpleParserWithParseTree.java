@@ -1,4 +1,4 @@
-package examples.recursivedescent;
+//package examples.recursivedescent;
 
 import java.util.LinkedList;
 
@@ -40,7 +40,7 @@ public class SimpleParserWithParseTree {
      * <p>
      * Equivalent grammar: creation of parse tree ensures left-associativity
      * expr -> term ('+' term)*
-     * atom -> atom ('*' atom)*
+     * term -> atom ('*' atom)*
      * atom -> '(' expr ')' | INT
      */
 

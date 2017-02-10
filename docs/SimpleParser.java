@@ -1,4 +1,4 @@
-package examples.recursivedescent;
+// package examples.recursivedescent;
 
 /**
  * Created by ksen on 2/1/17.
@@ -84,7 +84,7 @@ public class SimpleParser {
     }
 
     public static void main(String[] args) {
-        SimpleParserWithParseTree parser = new SimpleParserWithParseTree();
+        SimpleParser parser = new SimpleParser();
         parser.parse("3+50*1");
     }
 }

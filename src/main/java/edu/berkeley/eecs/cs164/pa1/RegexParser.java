@@ -1,11 +1,20 @@
 package edu.berkeley.eecs.cs164.pa1;
 
-
 /**
  * This class parses a simple regular expression syntax into an NFA
  */
 public class RegexParser {
-
+    /**
+     * Rewritten Grammar in EBNF form:
+     * expr -> term ('|' term)*
+     * term -> factor (factor)*
+     * factor -> atom ('+' | '*' | '?')?
+     * atom -> '\n' | '\t' | '\|' # escapes
+     *         | '\(' | '\)' | '\*'
+     *         | '\+' | '\?' | '\\'
+     *         | '(' expr ') # nested expressions
+     *         | any character other than | ( ) * + ? \ # single characters
+     */
     private RegexParser() {
     }
 
