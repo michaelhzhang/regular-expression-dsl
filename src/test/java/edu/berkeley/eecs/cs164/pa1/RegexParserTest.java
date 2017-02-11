@@ -22,4 +22,27 @@ public class RegexParserTest {
         Assert.assertNull(RegexParser.parse("a(b\\)"));
     }
 
+    @Test(expected = RegexParseException.class)
+    public void testEmptyRegex() throws Exception {
+        // These should be OK
+        Assert.assertNotNull(RegexParser.parse(""));
+        Assert.assertNotNull(RegexParser.parse("()"));
+        Assert.assertNotNull(RegexParser.parse("(a|)"));
+    }
+
+    @Test(expected = RegexParseException.class)
+    public void testComplicated() throws Exception {
+        // These should be OK
+        Assert.assertNotNull(RegexParser.parse("a(b|cd)+"));
+        Assert.assertNotNull(RegexParser.parse("((a))"));
+    }
+
+    @Test(expected = RegexParseException.class)
+    public void testBasics() throws Exception {
+        // These should be OK
+        Assert.assertNotNull(RegexParser.parse("a"));
+        Assert.assertNotNull(RegexParser.parse("ab"));
+        Assert.assertNotNull(RegexParser.parse("a|b"));
+    }
+
 }

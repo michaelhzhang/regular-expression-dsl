@@ -95,16 +95,18 @@ public class SimpleParserWithParseTree {
 
     private Node term() {
         Node tmp1 = atom();
+        System.out.println("Node: tmp1: " + tmp1.toString());
         Node tmp2;
         while (token == '*') {
             advance();
             tmp2 = atom();
-
+            System.out.println("Node: tmp2: " + tmp2.toString());
             Node tmp = new Node("term");
             tmp.addChild(tmp1);
             tmp.addChild("*");
             tmp.addChild(tmp2);
             tmp1 = tmp;
+            System.out.println("Node: new tmp1: " + tmp.toString());
         }
         return tmp1;
     }
@@ -114,9 +116,10 @@ public class SimpleParserWithParseTree {
             advance();
             Node tmp = new Node("atom");
             tmp.addChild('(');
-            expr();
+            tmp.addChild(expr());
             match(')');
             tmp.addChild(')');
+            System.out.println("TMP: " + tmp.toString());
             return tmp;
         } else if (token >= '0' && token <= '9') {
             String num = token+"";
@@ -135,7 +138,7 @@ public class SimpleParserWithParseTree {
 
     public static void main(String[] args) {
         SimpleParserWithParseTree parser = new SimpleParserWithParseTree();
-        Node tree = parser.parse("3+50*1");
+        Node tree = parser.parse("(3+50)*1");
         System.out.println(tree);
     }
 }
