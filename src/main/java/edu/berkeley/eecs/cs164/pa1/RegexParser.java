@@ -68,7 +68,8 @@ public class RegexParser {
     }
 
     private static Automaton buildNFA(ParseTreeNode parseTree) {
-        return parseTree.buildNFA();
+        Automaton nfa = parseTree.buildNFA();
+        return nfa;
     }
 
 

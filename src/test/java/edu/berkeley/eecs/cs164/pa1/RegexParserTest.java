@@ -22,7 +22,7 @@ public class RegexParserTest {
         Assert.assertNull(RegexParser.parse("a(b\\)"));
     }
 
-    @Test(expected = RegexParseException.class)
+    @Test()
     public void testEmptyRegex() throws Exception {
         // These should be OK
         Assert.assertNotNull(RegexParser.parse(""));
@@ -30,19 +30,31 @@ public class RegexParserTest {
         Assert.assertNotNull(RegexParser.parse("(a|)"));
     }
 
-    @Test(expected = RegexParseException.class)
+    @Test()
     public void testComplicated() throws Exception {
         // These should be OK
         Assert.assertNotNull(RegexParser.parse("a(b|cd)+"));
         Assert.assertNotNull(RegexParser.parse("((a))"));
     }
 
-    @Test(expected = RegexParseException.class)
+    @Test()
     public void testBasics() throws Exception {
         // These should be OK
         Assert.assertNotNull(RegexParser.parse("a"));
         Assert.assertNotNull(RegexParser.parse("ab"));
         Assert.assertNotNull(RegexParser.parse("a|b"));
+        Assert.assertNotNull(RegexParser.parse("a?"));
+        Assert.assertNotNull(RegexParser.parse("a+"));
+        Assert.assertNotNull(RegexParser.parse("a*"));
+        Assert.assertNotNull(RegexParser.parse("a|b|c|d"));
+    }
+
+    @Test()
+    public void testEscapes() throws Exception {
+        Assert.assertNotNull(RegexParser.parse("\\n"));
+        Assert.assertNotNull(RegexParser.parse("\\t"));
+        Assert.assertNotNull(RegexParser.parse("\\|"));
+        Assert.assertNotNull(RegexParser.parse("\\\\"));
     }
 
 }

@@ -45,11 +45,15 @@ public class Parser {
     }
 
     private void match(Token t) {
-        if (currToken.equals(t)) {
+        if ((currToken != null) && (currToken.equals(t))) {
             advance();
         } else {
-            throw new RegexParseException("Unexpected token: " + currToken
-                    + ". Expecting: " + t + ".");
+            if (currToken != null) {
+                throw new RegexParseException("Unexpected token: " + currToken
+                        + ". Expecting: " + t + ".");
+            } else {
+                throw new RegexParseException("Null token. Expecting: " + t + ".");
+            }
         }
     }
 
@@ -66,6 +70,9 @@ public class Parser {
 
     private ParseTreeNode expr() {
         ParseTreeNode result = term();
+        if (isEpsilon(result)) {
+            return result;
+        }
         ParseTreeNode toOrWith;
         while ((currToken != null) && (currToken.equals(OR))) {
             advance();
@@ -113,6 +120,7 @@ public class Parser {
             }
             factorNode.addChild(result);
             result = factorNode;
+            advance();
         }
         return result;
     }
@@ -132,7 +140,9 @@ public class Parser {
     }
 
     private ParseTreeNode atom() {
-        if (currToken.equals(LEFTPAREN)) {
+        if (currToken == null) { // TODO
+            return new EpsilonNode();
+        } else if (currToken.equals(LEFTPAREN)) {
             advance();
             AtomNode atomNode = new AtomNode();
             atomNode.addChild(expr());

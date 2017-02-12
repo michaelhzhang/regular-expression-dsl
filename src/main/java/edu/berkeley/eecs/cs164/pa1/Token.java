@@ -18,23 +18,23 @@ class Token {
 
     public char getChar() {
         // Apparently you can't use strings in switch statements?
-        if (lexeme == "\\n") {
+        if (lexeme.equals("\\n")) {
               return '\n';
-        } else if (lexeme == "\\t") {
+        } else if (lexeme.equals("\\t")) {
             return '\t';
-        } else if (lexeme == "\\|"){
+        } else if (lexeme.equals("\\|")) {
             return '|';
-        } else if (lexeme == "\\("){
+        } else if (lexeme.equals("\\(")) {
             return '(';
-        } else if (lexeme == "\\)"){
+        } else if (lexeme.equals("\\)")) {
             return ')';
-        } else if (lexeme == "\\*"){
+        } else if (lexeme.equals("\\*")) {
             return '*';
-        } else if (lexeme == "\\+"){
+        } else if (lexeme.equals("\\+")) {
             return '+';
-        } else if (lexeme == "\\?"){
+        } else if (lexeme.equals("\\?")) {
             return '?';
-        } else if (lexeme == "\\\\") {
+        } else if (lexeme.equals("\\\\")) {
             return '\\';
         } else {
             return lexeme.charAt(0);
