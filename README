@@ -1,0 +1,14 @@
+Name: Michael Zhang
+SID: 23619852
+Login: cs164-abt
+
+1) One thing that was annoying was I didn't realize how incomplete the provided 
+example code was. For example, SimpleParserWithParseTree didn't properly 
+handle nested expressions, which was confusing me for a while as I used it as a 
+template. Similarly, it was unclear that it's not actually necessary to put e.g.
+"(" or ")" in the actual parse tree itself.
+2) It took me a while to actually understand how the recursive descent algorithm worked;
+it took running through a few examples step by step to understand it
+3) It was unclear where in the notes to find the NFA simulation algorithm since
+it was hidden in NFAtoDFA.pdf
+
