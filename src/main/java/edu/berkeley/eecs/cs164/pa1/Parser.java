@@ -3,7 +3,6 @@ package edu.berkeley.eecs.cs164.pa1;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: Don't think I'm handling nulls correctly (will run into NPEs)
 /**
  * Created by michaelzhang on 2/11/17.
  */
@@ -140,7 +139,7 @@ public class Parser {
     }
 
     private ParseTreeNode atom() {
-        if (currToken == null) { // TODO
+        if (currToken == null) {
             return new EpsilonNode();
         } else if (currToken.equals(LEFTPAREN)) {
             advance();

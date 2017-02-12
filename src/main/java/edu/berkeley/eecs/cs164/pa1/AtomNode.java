@@ -4,7 +4,7 @@ package edu.berkeley.eecs.cs164.pa1;
  * Created by michaelzhang on 2/11/17.
  */
 public class AtomNode extends InteriorNode {
-    public Automaton buildNFA() { // TODO: Is all this necessary?
+    public Automaton buildNFA() {
         AutomatonState startState = null;
         AutomatonState endState = null;
         for (ParseTreeNode child: this.children) {
