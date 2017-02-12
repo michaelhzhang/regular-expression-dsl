@@ -32,9 +32,7 @@ public class RegexParser {
      */
     public static Automaton parse(String pattern) {
         List<Token> tokens = lexPattern(pattern);
-        System.out.println(tokens);
         ParseTreeNode parseTree = buildParseTree(tokens);
-        System.out.println(parseTree);
         Automaton nfa = buildNFA(parseTree);
         return nfa;
     }
@@ -70,8 +68,7 @@ public class RegexParser {
     }
 
     private static Automaton buildNFA(ParseTreeNode parseTree) {
-        return null;
-        //return combineChildrenNFAs(parseTree.children);
+        return parseTree.buildNFA();
     }
 
 

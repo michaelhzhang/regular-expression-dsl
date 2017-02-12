@@ -16,6 +16,31 @@ class Token {
         return this.lexeme.charAt(0) == '\\';
     }
 
+    public char getChar() {
+        // Apparently you can't use strings in switch statements?
+        if (lexeme == "\\n") {
+              return '\n';
+        } else if (lexeme == "\\t") {
+            return '\t';
+        } else if (lexeme == "\\|"){
+            return '|';
+        } else if (lexeme == "\\("){
+            return '(';
+        } else if (lexeme == "\\)"){
+            return ')';
+        } else if (lexeme == "\\*"){
+            return '*';
+        } else if (lexeme == "\\+"){
+            return '+';
+        } else if (lexeme == "\\?"){
+            return '?';
+        } else if (lexeme == "\\\\") {
+            return '\\';
+        } else {
+            return lexeme.charAt(0);
+        }
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Token)) { return false; }
